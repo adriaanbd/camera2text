@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Draw a rectangle #1</title>
+<style>
+body {
+  padding:0;
+  margin:0;
+  background:#000;
+}
+canvas {
+  display:block;
+  margin:30px auto 0;
+  background:#fff;
+}
+h1 {
+  position:absolute;
+  top:0;
+  left:0;
+  color:#fff;
+  margin:0;
+  font-size:80px;
+  font-family:Arial, sans-serif;
+  width:400px;
+  line-height:80px;
+}
+</style>
+</head>
+
+<body>
+<h1>Draw a rectangle!</h1>
+
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script src="./drawMouse.js"></script>
+<script>
+        window.onload = function ()
+    {
+
+        var canvas  = document.getElementById("canvas");
+        var context = canvas.getContext('2d');
+
+        var img = new Image();
+        img.src = './static/dog-cat.png';
+
+
+        img.onload = function (e)
+        {
+            context.drawImage(img, 0, 0,500,500);
+        }
+        
+    }
+
+    </script>
+</body>
+</html>

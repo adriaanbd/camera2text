@@ -1,0 +1,305 @@
+{
+  'Labels': [
+    {
+      'Name': 'Human',
+      'Confidence': 98.88923645019531,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Person',
+      'Confidence': 98.88923645019531,
+      'Instances': [
+        {
+          'BoundingBox': {
+            'Width': 0.2602982223033905,
+            'Height': 0.8058261275291443,
+            'Left': 0.45751047134399414,
+            'Top': 0.12126270681619644
+          },
+          'Confidence': 98.88923645019531
+        },
+        {
+          'BoundingBox': {
+            'Width': 0.25702863931655884,
+            'Height': 0.7522990703582764,
+            'Left': 0.21499046683311462,
+            'Top': 0.1657526046037674
+          },
+          'Confidence': 98.86927795410156
+        }
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Sitting',
+      'Confidence': 98.5711441040039,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Person'
+        }
+      ]
+    },
+    {
+      'Name': 'Furniture',
+      'Confidence': 91.75851440429688,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Table',
+      'Confidence': 84.17879486083984,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Furniture'
+        }
+      ]
+    },
+    {
+      'Name': 'Indoors',
+      'Confidence': 84.1543960571289,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Crowd',
+      'Confidence': 73.48816680908203,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Person'
+        }
+      ]
+    },
+    {
+      'Name': 'Female',
+      'Confidence': 70.10486602783203,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Person'
+        }
+      ]
+    },
+    {
+      'Name': 'Chair',
+      'Confidence': 68.94871520996094,
+      'Instances': [
+        {
+          'BoundingBox': {
+            'Width': 0.22532202303409576,
+            'Height': 0.2773982584476471,
+            'Left': 0.7556946873664856,
+            'Top': 0.7041000723838806
+          },
+          'Confidence': 68.94871520996094
+        }
+      ],
+      'Parents': [
+        {
+          'Name': 'Furniture'
+        }
+      ]
+    },
+    {
+      'Name': 'Clothing',
+      'Confidence': 68.81089782714844,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Apparel',
+      'Confidence': 68.81089782714844,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Electronics',
+      'Confidence': 66.62483978271484,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Pc',
+      'Confidence': 66.62483978271484,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Electronics'
+        },
+        {
+          'Name': 'Computer'
+        }
+      ]
+    },
+    {
+      'Name': 'Computer',
+      'Confidence': 66.62483978271484,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Electronics'
+        }
+      ]
+    },
+    {
+      'Name': 'People',
+      'Confidence': 61.78315734863281,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Person'
+        }
+      ]
+    },
+    {
+      'Name': 'Interview',
+      'Confidence': 60.822227478027344,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        
+      ]
+    },
+    {
+      'Name': 'Room',
+      'Confidence': 59.759315490722656,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Indoors'
+        }
+      ]
+    },
+    {
+      'Name': 'Office',
+      'Confidence': 59.216705322265625,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Indoors'
+        }
+      ]
+    },
+    {
+      'Name': 'Tabletop',
+      'Confidence': 58.509300231933594,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Furniture'
+        }
+      ]
+    },
+    {
+      'Name': 'Desk',
+      'Confidence': 57.14462661743164,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Table'
+        },
+        {
+          'Name': 'Furniture'
+        }
+      ]
+    },
+    {
+      'Name': 'Audience',
+      'Confidence': 56.97792434692383,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Person'
+        },
+        {
+          'Name': 'Crowd'
+        }
+      ]
+    },
+    {
+      'Name': 'Speech',
+      'Confidence': 55.00361633300781,
+      'Instances': [
+        
+      ],
+      'Parents': [
+        {
+          'Name': 'Person'
+        },
+        {
+          'Name': 'Audience'
+        },
+        {
+          'Name': 'Crowd'
+        }
+      ]
+    }
+  ],
+  'LabelModelVersion': '2.0',
+  'ResponseMetadata': {
+    'RequestId': 'ffb82eca-bf79-43b1-9432-4228a4131acd',
+    'HTTPStatusCode': 200,
+    'HTTPHeaders': {
+      'content-type': 'application/x-amz-json-1.1',
+      'date': 'Sun, 09 Aug 2020 15:53:57 GMT',
+      'x-amzn-requestid': 'ffb82eca-bf79-43b1-9432-4228a4131acd',
+      'content-length': '2565',
+      'connection': 'keep-alive'
+    },
+    'RetryAttempts': 0
+  }
+}
