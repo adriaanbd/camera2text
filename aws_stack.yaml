@@ -83,7 +83,7 @@ Resources:
             SubnetId: !Ref PublicSubnet
 
     PrivateRouteTable:
-        Type: AWS::EC2::Route
+        Type: AWS::EC2::RouteTable
         Properties:
             VpcId: !Ref VPC
             Tags:
