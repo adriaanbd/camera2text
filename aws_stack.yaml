@@ -1,0 +1,125 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: This template deploys a VPC with a public and private subnet in one (1) Availability Zone; an Internet Gateway with a route table in the public subnet pointing to it; a NAT gateway in the public subnet; and a default route table in the private subnet pointing to the NAT gateway.
+
+Resources:
+    VPC:
+        Type: AWS::EC2::VPC
+        Properties:
+            CidrBlock: 10.0.0.0/24
+            EnableDnsSupport: false
+            EnableDnsHostnames: false
+            Tags:
+              - Key: Name
+                Value: Cam2TextCFStack-VPC
+
+    InternetGateway:
+        Type: AWS::EC2::InternetGateway
+        Properties:
+            Tags:
+              - Key: Name
+                Value: Cam2TextCFStack-IGW
+
+    InternetGatewayAttachment:
+        Type: AWS::EC2::VPCGatewayAttachment
+        Properties:
+            InternetGatewayId: !Ref InternetGateway
+            VpcId: !Ref VPC
+
+    PublicSubnet:
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: !Ref VPC
+            AvailabilityZone: us-east-1a
+            CidrBlock: 10.0.0.240/28
+            MapPublicIpOnLaunch: true
+            Tags:
+              - Key: Name
+                Value: Cam2TextCFStack-PubS
+    
+    PrivateSubnet: 
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: !Ref VPC
+            AvailabilityZone: us-east-1a
+            CidrBlock: 10.0.0.0/25
+            MapPublicIpOnLaunch: false
+            Tags: 
+              - Key: Name 
+                Value: Cam2TextCFStack-PrivS
+    
+    NatGatewayEIP:
+        Type: AWS::EC2::EIP
+        DependsOn: InternetGatewayAttachment
+        Properties:
+            Domain: vpc
+    
+    NatGateway:
+        Type: AWS::EC2::NatGateway
+        Properties:
+            AllocationId: !GetAtt NatGatewayEIP.AllocationId
+            SubnetId: !Ref PublicSubnet
+
+    PublicRouteTable:
+        Type: AWS::EC2::RouteTable
+        Properties:
+            VpcId: !Ref VPC
+            Tags:
+              - Key: Name
+                Value: Cam2Text-PublicRT
+    
+    DefaultPublicRoute:
+        Type: AWS::EC2::Route
+        DependsOn: InternetGatewayAttachment
+        Properties:
+            RouteTableId: !Ref PublicRouteTable
+            DestinationCidrBlock: 0.0.0.0/0
+            GatewayId: !Ref InternetGateway
+    
+    PublicSubnetRouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PublicRouteTable
+            SubnetId: !Ref PublicSubnet
+
+    PrivateRouteTable:
+        Type: AWS::EC2::RouteTable
+        Properties:
+            VpcId: !Ref VPC
+            Tags:
+              - Key: Name
+                Value: Cam2Text-PrivateRT
+    
+    DefaultPrivateRoute:
+        Type: AWS::EC2::Route
+        Properties:
+            RouteTableId: !Ref PrivateRouteTable
+            DestinationCidrBlock: 0.0.0.0/0
+            NatGatewayId: !Ref NatGateway
+    
+    PrivateSubnetRouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PrivateRouteTable
+            SubnetId: !Ref PrivateSubnet
+    
+    NoIngressSecurityGroup:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+            GroupName: "no-ingress-sg"
+            GroupDescription: "Security group with no ingress rule"
+            VpcId: !Ref VPC
+
+Outputs:
+    VPC:
+        Description: A reference to the created VPC
+        Value: !Ref VPC
+    PublicSubnet:
+        Description: A reference to the created public subnet
+        Value: !Ref PublicSubnet
+    PrivateSubnet:
+        Description: A reference to the created private subnet
+        Value: !Ref PrivateSubnet
+    NoIngressSecurityGroup:
+        Description: A reference to the security group created
+        Value: !Ref NoIngressSecurityGroup
